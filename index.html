@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#17111f">
+  <title>A Grande Biblioteca</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <main id="game-shell">
+    <div id="scene" aria-label="Cena 3D da biblioteca"></div>
+    <header class="topbar">
+      <div><div class="eyebrow">UMA AVENTURA ENTRE LIVROS</div><h1>A Grande Biblioteca</h1><p id="subtitle">Organize os livros e descubra a biblioteca.</p></div>
+      <button id="help-btn" class="round-btn" aria-label="Ajuda">?</button>
+    </header>
+    <section class="hud">
+      <div class="counter"><span>Livros organizados</span><strong id="score">0 / 6</strong></div>
+      <div class="progress"><div id="progress-fill"></div></div>
+    </section>
+    <div id="toast" role="status"></div>
+    <section id="intro-card" class="modal-card">
+      <div class="sparkle">✦</div><h2>Bem-vinda à biblioteca</h2>
+      <p>Escolha um livro na mesa e depois toque na estante indicada para guardá-lo. Organize todos os livros para concluir a primeira tarefa.</p>
+      <button id="start-btn" class="primary-btn">Começar a explorar</button>
+    </section>
+    <section id="help-card" class="modal-card hidden">
+      <button class="close-btn" id="close-help" aria-label="Fechar">×</button><h2>Como jogar</h2>
+      <p>1. Toque em um livro colorido sobre a mesa.</p><p>2. Toque na estante com a etiqueta do gênero correspondente.</p><p>3. Organize os seis livros. Você pode arrastar a cena para olhar ao redor.</p>
+      <button id="resume-btn" class="primary-btn">Entendi!</button>
+    </section>
+    <footer class="bottom-hint"><span class="dot"></span><span id="hint-text">Toque em “Começar a explorar” para iniciar.</span><button id="reset-btn">Recomeçar</button></footer>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

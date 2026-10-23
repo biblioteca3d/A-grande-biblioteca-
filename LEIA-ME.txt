@@ -1,0 +1,24 @@
+A GRANDE BIBLIOTECA — PROTÓTIPO WEB 3D
+
+ARQUIVOS
+- index.html: página principal do jogo
+- game.js: cenário 3D, controles e regras do jogo
+- style.css: aparência e interface
+- manifest.webmanifest: metadados para navegador móvel
+
+COMO TESTAR
+1. Envie TODOS os arquivos desta pasta para a raiz do mesmo repositório GitHub (não envie somente o ZIP).
+2. No GitHub, abra Settings > Pages.
+3. Em Build and deployment, selecione Deploy from a branch, branch main e pasta /(root), e salve.
+4. Aguarde a publicação e abra o endereço do site no Safari com conexão à internet.
+
+IMPORTANTE
+O jogo usa Three.js carregado de um CDN público, portanto é necessário ter conexão com a internet para carregar o motor 3D. O arquivo HTML aberto diretamente no app Arquivos do iPhone pode não carregar módulos JavaScript. A publicação em um site HTTPS é o caminho recomendado.
+
+CONTROLES
+- Toque em Começar a explorar.
+- Toque em um livro sobre a mesa.
+- Toque na estante do gênero correspondente (Fantasia, Romance ou Aventura).
+- Use Recomeçar para reiniciar a tarefa.
+
+Este é um protótipo inicial e precisa ser testado no Safari real do iPhone após publicação. Não contém dados pessoais.
