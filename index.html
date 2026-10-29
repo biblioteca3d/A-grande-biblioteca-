@@ -58,14 +58,15 @@ function showHelp(){ $('noticePill').textContent='Como jogar';$('noticeTitle').t
 function updateUI(){const stagePlaced=organized;$('count').textContent=Math.min(stagePlaced,3)+'/3';const total=books.filter(b=>!b.userData.placed).length;if(selected){$('selectedTitle').textContent=selected.userData.title;$('selectedText').textContent='Gênero: '+selected.userData.genre.toUpperCase()+' · toque na estante correspondente.';$('taskText').textContent='Leve o livro à seção '+selected.userData.genre.toUpperCase()+'.';$('hint').textContent='Agora toque na estante '+selected.userData.genre.toUpperCase()+'.'}else{$('selectedTitle').textContent='Nenhum livro selecionado';$('selectedText').textContent='Toque em um livro sobre a mesa para começar.';$('taskText').textContent=total?'Toque em um livro para selecioná-lo.':'Etapa concluída!';$('hint').textContent='Toque em um livro, arraste no cenário para olhar ao redor e depois toque na estante do gênero correto.'}}
 function animate(){requestAnimationFrame(animate);if(!renderer)return;const t=clock.getElapsedTime();camera.position.x+=(targetPos.x-camera.position.x)*.035;camera.position.z+=(targetPos.z-camera.position.z)*.035;camera.position.y+=(4.9-camera.position.y)*.025;camera.lookAt(targetPos.x*.35+lookOffsetX,1.35+lookOffsetY,-.9);decor.forEach(o=>{if(o.userData.float!==undefined)o.position.y+=Math.sin(t*1.1+o.userData.float)*.0008});books.forEach((b,i)=>{if(b===selected&&!b.userData.placed)b.position.y=.15+Math.sin(t*2.4)*.06});renderer.render(scene,camera)}
 // make shelf groups selectable with transparent hit panels
-const oldInit=init;
+let touchStartX=0,touchStartY=0,touchMoved=false,activePointer=false,lookOffsetX=0,lookOffsetY=0;
+  const oldInit=init;
 init();
 // add interaction panels after the main scene exists
 shelfTargets.forEach(s=>{const hit=new THREE.Mesh(new THREE.BoxGeometry(2.8,3.5,.5),new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}));hit.position.set(s.mesh.position.x,1.8,s.mesh.position.z+.25);hit.userData={kind:'shelfTarget',genre:s.genre};scene.add(hit)});
 // book selection and shelf selection raycasts need shelf panels to be considered before decorative meshes
 const originalTap=onTap;
 renderer.domElement.removeEventListener('pointerdown',originalTap);
-let touchStartX=0,touchStartY=0,touchMoved=false,activePointer=false,lookOffsetX=0,lookOffsetY=0;
+
 renderer.domElement.addEventListener('pointerdown',e=>{
   if(!started)return;
   touchStartX=e.clientX;touchStartY=e.clientY;touchMoved=false;activePointer=true;
